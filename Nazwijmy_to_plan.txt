@@ -1,4 +1,0 @@
-	"""
-		Niech tu kaýdy opisze swoje wizje tego co chcemy stworzyã, na poczàtek ogolnie. 
-		Potem bedziemy szczegóùowo ùàczyã obiewizje
-	"""
