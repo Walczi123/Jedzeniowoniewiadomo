@@ -172,3 +172,5 @@ INSERT INTO units(unit_id, name, abbr) VALUES
 (1,'kilogram','kg'),(2,'dekagram','deg'),(3,'gram','g'),(4,'tona','t')ON CONFLICT DO NOTHING;
 INSERT INTO units_ratio(bigger_unit_id, smaller_unit_id, ratio) VALUES
 (1,2,100),(1,3,1000),(2,3,10),(4,1,1000)ON CONFLICT DO NOTHING;
+INSERT INTO products_recipes(product_id, recipe_id, amount, unit_id) VALUES
+(1,2,10,2),(2,1,100,3) ON CONFLICT DO NOTHING;
