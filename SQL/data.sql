@@ -95,7 +95,22 @@ VALUES ('przepis 1', '
           <stage>Z ciasta zetnij wierzch na wysokości około 2 cm. Wydrąż delikatnie połowę miąższu tak, aby zostały brzegi ciasta i nietknięty spód.</stage>
           <stage>Krem: Czekoladę pokrój na drobne kawałki. Śmietanę ubij na niskich obrotach z cukrem pudrem. Dodaj czekoladę i wymieszaj. Banany obierz ze skórki, wierzch skrop sokiem z cytryny, aby nie ściemniały. Ułóż w wydrążonym cieście. Nałóż śmietanę, kształtując kopiec. Wierzch posyp rozdrobnionym ciastem i lekko dociśnij.</stage>
           <stage>Ciasto schłodź w lodówce przez 30 minut.</stage>
-      <stage>Gotowe.</stage>', 4);
+      <stage>Gotowe.</stage>', 4),
+	  ('Spaghetti Bolognese', '<recepie>
+         <stage>Usmażyć na patelni mięso</stage>
+         <stage>W między czasie zagotować wodę na makaron</stage>
+         <stage>Wlać do mięsa passatę pomidorową</stage>
+         <stage>Doprawić do smaku</stage>
+         <stage>Ugotować makaron według przepisu na opakowaniu</stage>
+     </recepie>', 2),
+	 ('Chilli Con Carne', '<recepie>
+         <stage>Usmażyć na patelni mięso</stage>
+         <stage>Dodać pomidory w kostce</stage>
+         <stage>Smażyć do czasu zmięknięcia pomidorów</stage>
+         <stage>Dodać pokrojoną paprykę, kukurydzę i fasolę</stage>
+         <stage>Doprawić solą, pieprzem i przyprawą do dań maksykańskich</stage>
+     </recepie>', 2)
+;
 
 INSERT INTO recipes_categories (recipe_id, category_id)
 VALUES (1, 2),
@@ -123,43 +138,29 @@ VALUES (1, 2, 100),
 INSERT INTO products_recipes (product_id, recipe_id, amount, unit_id)
 VALUES (1, 2, 10, 2),
        (2, 1, 100, 3),
-       (4, 3, 1, 6),
-       (5, 3, 1, 6),
-       (6, 3, 1, 6),
+       (4, 3, 1, 5),
+       (5, 3, 1, 5),
+       (6, 3, 1, 5),
        (11, 3, 300, 3),
-       (12, 3, 1, 7),
-       (13, 3, 1, 6),
+       (12, 3, 1, 6),
+       (13, 3, 1, 5),
        (14, 3, 200, 3),
-       (15, 3, 500, 8),
-       (16, 3, 1.3, 7),
+       (15, 3, 500, 7),
+       (16, 3, 1.3, 6),
        (17, 3, 50, 3),
-       (18, 3, 2, 10),
+       (18, 3, 2, 9),
        (19, 3, 0.5, 10),
        (20, 3, 0.5, 10),
        (21, 3, 0.5, 10),
        (23, 4, 340, 3),
        (24, 4, 220, 3),
-       (25, 4, 250, 8),
-       (26, 4, 210, 8),
+       (25, 4, 250, 7),
+       (26, 4, 210, 7),
        (27, 4, 1, 10),
        (28, 4, 1.2, 10),
-       (29, 4, 4, 10),
-       (30, 4, 2, 6),
-       (31, 4, 5, 6),
-       (32, 4, 500, 8),
-       (33, 4, 4, 10),
+       (29, 4, 4, 9),
+       (30, 4, 2, 5),
+       (31, 4, 5, 5),
+       (32, 4, 500, 7),
+       (33, 4, 4, 9),
        (34, 4, 100, 3);
-INSERT INTO "public"."recipes" ("name", "description", "user_id") VALUES ('Spaghetti Bolognese', '<recepie>
-         <stage>Usmażyć na patelni mięso</stage>
-         <stage>W między czasie zagotować wodę na makaron</stage>
-         <stage>Wlać do mięsa passatę pomidorową</stage>
-         <stage>Doprawić do smaku</stage>
-         <stage>Ugotować makaron według przepisu na opakowaniu</stage>
-     </recepie>', 2)
-INSERT INTO "public"."recipes" ("name", "description", "user_id") VALUES ('Chilli Con Carne', '<recepie>
-         <stage>Usmażyć na patelni mięso</stage>
-         <stage>Dodać pomidory w kostce</stage>
-         <stage>Smażyć do czasu zmięknięcia pomidorów</stage>
-         <stage>Dodać pokrojoną paprykę, kukurydzę i fasolę</stage>
-         <stage>Doprawić solą, pieprzem i przyprawą do dań maksykańskich</stage>
-     </recepie>', 2)
