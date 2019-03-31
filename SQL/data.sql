@@ -78,7 +78,7 @@ VALUES ('przepis 1', '
         <stage>Sos wymieszaj z zimną wodą i śmietaną zgodnie z przepisem na opakowaniu: wlej na patelnie do podsmaonych składników i zagotuj 3-4 min. Ugotowany makaron wsym na patelnie, wymieszaj i podgrzej w sosie.</stage>
 		<stage>Gotowe.</stage>
     </stages>
-</recipe>', 2),
+</recipe>', 1),
        ('risotto', '<recipe>
     <stages>
         <stage>W garnku na 1 łyżce oliwy zeszklić pokrojoną w kosteczkę cebulę oraz starty na tarce czosnek. Przesunąć je na bok garnka, a w wolne miejsce włożyć 1 łyżkę masła oraz pokrojonego w kosteczkę kurczaka, doprawić go solą oraz pieprzem i obsmażać przez około 3 minuty co chwilę mieszając.</stage>
@@ -102,16 +102,15 @@ VALUES ('przepis 1', '
          <stage>Wlać do mięsa passatę pomidorową</stage>
          <stage>Doprawić do smaku</stage>
          <stage>Ugotować makaron według przepisu na opakowaniu</stage>
-     </recepie>', 2),
+     </recepie>', 3),
 	 ('Chilli Con Carne', '<recepie>
          <stage>Usmażyć na patelni mięso</stage>
          <stage>Dodać pomidory w kostce</stage>
          <stage>Smażyć do czasu zmięknięcia pomidorów</stage>
          <stage>Dodać pokrojoną paprykę, kukurydzę i fasolę</stage>
          <stage>Doprawić solą, pieprzem i przyprawą do dań maksykańskich</stage>
-     </recepie>', 2)
+     </recepie>', 3)
 ;
-
 INSERT INTO recipes_categories (recipe_id, category_id)
 VALUES (1, 2),
        (2, 1),

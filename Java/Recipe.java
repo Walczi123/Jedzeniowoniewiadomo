@@ -1,16 +1,10 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.PreparedStatement;
 import java.util.List;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class Recipe {
     private String name;
     private String description;
-    private List<Integer> productsList;
+    private List<Integer> productsList=new ArrayList<>();
     private int  userId;
 //getters and setters
     //name
@@ -22,6 +16,7 @@ public class Recipe {
     //productList
     public void setProductsList(List<Integer> l){this.productsList=l;}
     public List<Integer> getProductsList(){return this.productsList;}
+    public void addProduct(Integer elem){this.productsList.add(elem);}
     //userId
     public void setUserId(int u){this.userId=u;}
     public int getUserId(){return this.userId;}
@@ -33,32 +28,7 @@ public class Recipe {
         this.productsList=list;
         this.userId=id;
     }
-//methods
-    void getFullRecipe(int recipeId){
-        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "user", "password")) {
-            Statement statement = connection.createStatement();;
-            ResultSet r = statement.executeQuery("SELECT * FROM recipes");
-/*            PreparedStatement statement = connection.prepareStatement("SELECT * FROM recipes");
-            statement.setString(1, userID);*/
-            while (r.next()) {
-                if(r.getInt("recipe_id")== recipeId){
-                    this.setName(r.getString("name"));
-                    this.setDescription(r.getString("description"));
-                    this.setUserId(r.getInt("user_id"));
-                }
-            }
-            List<Integer> list= new ArrayList<>();
-            r = statement.executeQuery("SELECT * FROM products_recipes");
-            while (r.next()) {
-                if(r.getInt("recipe_id")== recipeId){
-                    list.add(r.getInt("product_id"));
-                }
-            }
-            this.setProductsList(list);
-        }
-        catch (SQLException e) {
-            System.out.println("Connection failure.");
-            e.printStackTrace();
-        }
-    }
 }
+
+
+
