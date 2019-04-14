@@ -1,12 +1,14 @@
-import java.util.List;
+package Models;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class Recipe {
     private String name;
     private String description;
     private List<Integer> productsList=new ArrayList<>();
     private int  userId;
-//getters and setters
+    //getters and setters
     //name
     public void setName(String s){this.name=s;}
     public String getName(){return this.name;}
@@ -20,7 +22,7 @@ public class Recipe {
     //userId
     public void setUserId(int u){this.userId=u;}
     public int getUserId(){return this.userId;}
-//constructors
+    //constructors
     public Recipe(){}
     public Recipe(String n,String desc,List<Integer> list,int id){
         this.name=n;
@@ -29,6 +31,3 @@ public class Recipe {
         this.userId=id;
     }
 }
-
-
-
