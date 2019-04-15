@@ -6,14 +6,13 @@ import SQLTablesNames.ProductsRecipesTable;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 
 public class RecipeSQLProvider {
-    private DatabaseLoader datbaseLoader;
+    private DatabaseProvider datbaseLoader;
 
-    public  RecipeSQLProvider(DatabaseLoader databaseLoader) {
-        this.datbaseLoader = databaseLoader;
+    public  RecipeSQLProvider(DatabaseProvider databaseProvider) {
+        this.datbaseLoader = databaseProvider;
     }
 
     Recipe getRecipe(int recipeId) throws SQLException {
