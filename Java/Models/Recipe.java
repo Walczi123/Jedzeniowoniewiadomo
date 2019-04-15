@@ -8,6 +8,7 @@ public class Recipe {
     private String description;
     private List<Integer> productsList=new ArrayList<>();
     private int  userId;
+    private boolean isDeleted;
     //getters and setters
     //name
     public void setName(String s){this.name=s;}
@@ -22,6 +23,9 @@ public class Recipe {
     //userId
     public void setUserId(int u){this.userId=u;}
     public int getUserId(){return this.userId;}
+    //isDeleted
+    public void setDeleted(boolean u){this.isDeleted=u;}
+    public boolean getDeleted(){return this.isDeleted;}
     //constructors
     public Recipe(){}
     public Recipe(String n,String desc,List<Integer> list,int id){
@@ -29,5 +33,6 @@ public class Recipe {
         this.description=desc;
         this.productsList=list;
         this.userId=id;
+        this.isDeleted=false;
     }
 }
