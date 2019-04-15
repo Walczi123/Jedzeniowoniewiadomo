@@ -1,0 +1,13 @@
+DROP TABLE  IF EXISTS public.recipes_categories;
+DROP TABLE  IF EXISTS public.categories;
+DROP TABLE  IF EXISTS public.category_groups;
+DROP TABLE  IF EXISTS public.recipes_photos;
+DROP TABLE  IF EXISTS public.products_photos;
+DROP TABLE  IF EXISTS public.photos;
+DROP TABLE  IF EXISTS public.prices;
+DROP TABLE  IF EXISTS public.products_recipes;
+DROP TABLE  IF EXISTS public.recipes;
+DROP TABLE  IF EXISTS public.users;
+DROP TABLE  IF EXISTS public.products;
+DROP TABLE  IF EXISTS public.units_ratio;
+DROP TABLE  IF EXISTS public.units;
