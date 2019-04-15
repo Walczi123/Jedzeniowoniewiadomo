@@ -1,4 +1,4 @@
-package Database;
+package SQL;
 
 import java.sql.*;
 import java.sql.Connection;
@@ -7,13 +7,13 @@ import java.sql.SQLException;
 /**
  * Created on 31.03.19
  */
-public abstract class DatabaseLoader {
+public abstract class DatabaseProvider {
     protected String server;
     protected String login;
     protected String password;
     protected Connection connection;
 
-    public DatabaseLoader(String server, String login, String password) {
+    public DatabaseProvider(String server, String login, String password) {
         this.server = server;
         this.login = login;
         this.password = password;

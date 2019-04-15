@@ -1,4 +1,7 @@
-package Database;
+package SQL;
+
+import Models.Unit;
+import SQLTableNames.UnitsTable;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -8,10 +11,10 @@ import java.util.HashMap;
 /**
  * Created on 31.03.19
  */
-public final class SQLUnitLoader {
-    private DatabaseLoader datbaseLoader;
+public final class UnitSQLProvider {
+    private DatabaseProvider datbaseLoader;
 
-    public SQLUnitLoader(DatabaseLoader databaseLoader) {
+    public UnitSQLProvider(DatabaseProvider databaseLoader) {
         this.datbaseLoader = databaseLoader;
     }
 
@@ -33,12 +36,12 @@ public final class SQLUnitLoader {
     public HashMap<Integer, Unit> getAll() throws SQLException {
         Connection c = datbaseLoader.getConnection();
         var stmt = c.prepareStatement(
-                "SELECT unit_id, name FROM units"
+                "SELECT "+ UnitsTable.NAME+", "+ UnitsTable.UNIT_ID+" FROM "+ UnitsTable.TABLE_NAME
         );
         var result = stmt.executeQuery();
         HashMap<Integer, Unit> ret = new HashMap<>();
         while (result.next()) {
-            ret.put(result.getInt("unit_id"), new Unit(result.getInt("unit_id"), result.getString("name")));
+            ret.put(result.getInt(UnitsTable.UNIT_ID), new Unit(result.getInt(UnitsTable.UNIT_ID), result.getString(UnitsTable.NAME)));
         }
         return ret;
     }

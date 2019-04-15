@@ -1,4 +1,4 @@
-package Database;
+package SQL;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,9 +7,9 @@ import java.sql.SQLException;
 /**
  * Created on 31.03.19
  */
-public final class PostgresDatabaseLoader extends DatabaseLoader {
+public final class PostgresDatabaseProvider extends DatabaseProvider {
 
-    public PostgresDatabaseLoader(String server, String login, String password) {
+    public PostgresDatabaseProvider(String server, String login, String password) {
         super(server, login, password);
     }
 
