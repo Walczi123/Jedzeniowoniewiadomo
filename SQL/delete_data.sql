@@ -1,15 +1,4 @@
-TRUNCATE TABLE public.categories
-    RESTART IDENTITY
-    CASCADE;
-TRUNCATE TABLE public.category_groups
-    RESTART IDENTITY
-    CASCADE;
-TRUNCATE TABLE public.photos
-    RESTART IDENTITY
-    CASCADE;
-TRUNCATE TABLE public.prices
-    RESTART IDENTITY
-    CASCADE;
+
 TRUNCATE TABLE public.products
     RESTART IDENTITY
     CASCADE;
