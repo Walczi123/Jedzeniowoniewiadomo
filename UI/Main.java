@@ -1,5 +1,8 @@
 package UI;
 
+import Models.Category;
+import SQL.CategoriesSQLProvider;
+import SQL.CategoryGropusSQLProvider;
 import SQL.PostgresDatabaseProvider;
 import SQL.UnitSQLProvider;
 import Models.Unit;
@@ -14,20 +17,10 @@ public class Main {
         try {
             PostgresDatabaseProvider databaseLoader = new PostgresDatabaseProvider("localhost:5432/jedzeniowoniewiadomo", "jedzeniowo", "Pass#1234");
             databaseLoader.open();
-            UnitSQLProvider unitLoader = new UnitSQLProvider(databaseLoader);
-            Unit unit=unitLoader.get(1);
-            HashMap<Integer, Unit> units = unitLoader.getAll();
-            for(var unitKey: units.keySet()){
-                System.out.println(units.get(unitKey).getName());
-            }
-            unit = unitLoader.insert(new Unit(null, "JednostkaKuby"));
-            System.out.println(unit.getName());
-            unit=unitLoader.get(unit.getId());
-            System.out.println(unit.getName());
-            unitLoader.delete(unit);
-            unit=unitLoader.get(unit.getId());
-            System.out.println(unit.getName());
-            databaseLoader.close();
+            CategoriesSQLProvider categoriesSQLProvider = new CategoriesSQLProvider(databaseLoader);
+            CategoryGropusSQLProvider categoryGropusSQLProvider = new CategoryGropusSQLProvider(databaseLoader);
+            System.out.println(categoryGropusSQLProvider.getAll());
+            System.out.println(categoryGropusSQLProvider.getWithData(1).getCategories());
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -6,9 +6,9 @@ import java.util.HashMap;
  * Created on 31.03.19
  */
 public class Unit {
-    protected Integer id;
+    private Integer id;
     protected String name;
-    protected HashMap<Unit, Double> ratios;
+    private HashMap<Unit, Double> ratios;
 
     public Unit(Integer id, String name) {
         this.id = id;
@@ -29,5 +29,14 @@ public class Unit {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String toString() {
+        return "Unit{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", ratios=" + ratios +
+                '}';
     }
 }
