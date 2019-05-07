@@ -11,7 +11,8 @@ VALUES ('śniadania', 1),
        ('kolacje', 1),
        ('włoska', 2),
        ('francuska', 2),
-       ( 'polska', 2);
+       ( 'polska', 2),
+       ('meksykańska',2);
 INSERT INTO photos (url)
 VALUES ('photoAddress1'),
        ('photoAddress2'),
@@ -115,7 +116,11 @@ INSERT INTO recipes_categories (recipe_id, category_id)
 VALUES (1, 2),
        (2, 1),
        (3, 4),
-       (4, 6);
+       (4, 6),
+	(5,4),
+	(6,4),
+	(5,8),
+	(6,11);
 INSERT INTO recipes_photos (recipe_id, photo_id)
 VALUES (2, 3);
 INSERT INTO units (name, abbr)
@@ -162,4 +167,12 @@ VALUES (1, 2, 10, 2),
        (31, 4, 5, 5),
        (32, 4, 500, 7),
        (33, 4, 4, 9),
-       (34, 4, 100, 3);
+       (34, 4, 100, 3),
+	(3,5,1,5),
+	(4,5,2,5),
+	(5,5,1,1),
+	(7,5,500,3),
+	(21,6,2,9),
+	(22,6,1,9),
+	(4,6,1,5),
+	(7,6,400,3);
