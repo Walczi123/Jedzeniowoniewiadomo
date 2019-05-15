@@ -1,4 +1,4 @@
-package SQLTableNames;
+package SQLTablesNames;
 
 /**
  * Created on 07.04.19

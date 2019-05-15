@@ -1,7 +1,7 @@
 package SQL;
 
 import Models.Unit;
-import SQLTableNames.UnitsTable;
+import SQLTablesNames.UnitsTable;
 
 import java.sql.Connection;
 import java.sql.SQLException;

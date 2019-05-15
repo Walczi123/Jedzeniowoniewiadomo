@@ -2,7 +2,7 @@ package SQL;
 
 import Models.Category;
 import Models.Unit;
-import SQLTableNames.CategoriesTable;
+import SQLTablesNames.CategoriesTable;
 
 import java.sql.Connection;
 import java.sql.SQLException;

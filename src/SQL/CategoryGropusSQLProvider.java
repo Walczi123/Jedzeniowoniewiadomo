@@ -2,8 +2,8 @@ package SQL;
 
 import Models.Category;
 import Models.CategoryGroup;
-import SQLTableNames.CategoriesTable;
-import SQLTableNames.CategoryGroupsTable;
+import SQLTablesNames.CategoriesTable;
+import SQLTablesNames.CategoryGroupsTable;
 
 import java.sql.Connection;
 import java.sql.SQLException;
