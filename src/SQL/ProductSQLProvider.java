@@ -34,6 +34,31 @@ public class ProductSQLProvider {
         return result;
     }
 
+    public Product getProduct(String name) throws SQLException {
+      //DESCRIPTION: return product of given id (productId)
+      Product result=new Product();
+      Connection c=datbaseProvider.getConnection();
+
+      //Query
+      var statement=c.prepareStatement("SELECT * FROM "+ProductTable.TABLE_NAME+" WHERE "+ProductTable.NAME+"=?");
+      statement.setString(1, name);
+      //Execute Queries
+      var result_record=statement.executeQuery();
+      //Save data
+      result_record.next();
+      result.setName(result_record.getString(ProductTable.NAME));
+      result.setDeleted(result_record.getBoolean(ProductTable.IS_DELETED));
+      return result;
+    }
+
+    public boolean doesProductExist(String name) throws SQLException {
+      Connection connection = datbaseLoader.getConnection();
+      var statement=c.prepareStatement("SELECT * FROM "+ProductTable.TABLE_NAME+" WHERE "+ProductTable.NAME+"=?");
+      stmt.setString(1, name);
+      var result = stmt.executeQuery();
+      return result.next();
+    }
+
     public void insertProduct(Product product) throws SQLException {
         //DESCRIPTION: add product to the products table
         Connection c=datbaseProvider.getConnection();
@@ -76,5 +101,3 @@ public class ProductSQLProvider {
         statement.executeUpdate();
     }
 }
-
-
