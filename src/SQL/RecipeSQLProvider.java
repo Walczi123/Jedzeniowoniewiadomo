@@ -32,9 +32,8 @@ public final class RecipeSQLProvider {
         result.setDescription(result_rec.getString(RecipeTable.DESCRIPTION));
         result.setUserId(result_rec.getInt(RecipeTable.USER_ID));
         result.setDeleted(result_rec.getBoolean(RecipeTable.IS_DELETED));
-        while (result_prod.next()) {
-            result.addProduct(result_prod.getInt(ProductsRecipesTable.PRODUCT_ID));
-        }
+        ProductListSQLProvider productListSQLProvider = new ProductListSQLProvider(this.datbaseProvider);
+        result.setProductsList(productListSQLProvider.getProductList(recipeId));
         return result;
     }
     public List<Recipe> getAllUserRecipes(int userId) throws SQLException{
@@ -57,10 +56,9 @@ public final class RecipeSQLProvider {
         //connecting
         Connection connection=datbaseProvider.getConnection();
         //SQL command
-        String insertSQLRecipe="INSERT INTO "+RecipeTable.TABLE_NAME+" ("+RecipeTable.NAME+","+RecipeTable.DESCRIPTION+","+RecipeTable.USER_ID+") VALUES (?,?,?)";
-        String insertSQLProduct_recipe="INSERT INTO "+ProductsRecipesTable.TABLE_NAME+" ("+ProductsRecipesTable.PRODUCT_ID+","+ProductsRecipesTable.RECIPE_ID+","+ProductsRecipesTable.AMOUNT+","+ProductsRecipesTable.UNIT_ID+") VALUES (?,?,1,1)";
+        String insertSQLRecipe="INSERT INTO "+RecipeTable.TABLE_NAME+" ("+RecipeTable.NAME+
+                ","+RecipeTable.DESCRIPTION+","+RecipeTable.USER_ID+") VALUES (?,?,?)";
         var statement_rec=connection.prepareStatement(insertSQLRecipe,Statement.RETURN_GENERATED_KEYS);
-        var statement_prodrec=connection.prepareStatement(insertSQLProduct_recipe);
         //input variables in statement for table recipe
         statement_rec.setString(1, input.getName());
         statement_rec.setString(2, input.getDescription());
@@ -75,12 +73,8 @@ public final class RecipeSQLProvider {
         if(recordId==-1)
             throw new SQLException("Creating unit failed, no ID obtained.");
         //input variables in statement for table product_recipe
-        for(var record:input.getProductsList()) {
-            statement_prodrec.setInt(1, record);
-            statement_prodrec.setInt(2, recordId);
-            //execute SQL statement for table product_recipe in every iteration
-            statement_prodrec.executeUpdate();
-        }
+        ProductListSQLProvider productListSQLProvider = new ProductListSQLProvider(this.datbaseProvider);
+        productListSQLProvider.insertProductList(input.getProductsList(),recordId);
     }
     public void deleteRecipe(int recipeId)throws SQLException{
         //connecting

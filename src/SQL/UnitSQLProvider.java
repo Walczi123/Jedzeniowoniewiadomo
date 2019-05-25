@@ -38,27 +38,20 @@ public final class UnitSQLProvider {
         }
     }
 
-    public Unit getUnit(String name) throws SQLException {
+    public int getUnitId(Unit unit) throws SQLException {
         Connection connection = datbaseLoader.getConnection();
         var stmt = connection.prepareStatement(
-                "SELECT " + UnitsTable.UNIT_ID + ", " +
-                        UnitsTable.NAME +
+                "SELECT " + UnitsTable.UNIT_ID +
                         " FROM " + UnitsTable.TABLE_NAME +
                         " WHERE " + UnitsTable.NAME + "=?"
         );
-        stmt.setString(1, name);
+        stmt.setString(1, unit.getName());
         var result = stmt.executeQuery();
-        if (result.next()) {
-            return new Unit(
-                    result.getInt(UnitsTable.UNIT_ID),
-                    result.getString(UnitsTable.NAME)
-            );
-        } else {
-            return null;
-        }
+        result.next();
+        return result.getInt(UnitsTable.UNIT_ID);
     }
 
-    public boolean doesUnitExist(String name) throws SQLException {
+    public boolean doesUnitExist(Unit unit) throws SQLException {
       Connection connection = datbaseLoader.getConnection();
       var stmt = connection.prepareStatement(
               "SELECT " + UnitsTable.UNIT_ID + ", " +
@@ -66,7 +59,7 @@ public final class UnitSQLProvider {
                       " FROM " + UnitsTable.TABLE_NAME +
                       " WHERE " + UnitsTable.NAME + "=?"
       );
-      stmt.setString(1, name);
+      stmt.setString(1, unit.getName());
       var result = stmt.executeQuery();
       return result.next();
     }
