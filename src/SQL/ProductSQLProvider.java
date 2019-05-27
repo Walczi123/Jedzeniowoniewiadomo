@@ -34,6 +34,28 @@ public class ProductSQLProvider {
         return result;
     }
 
+    public int getProductId(Product product) throws SQLException {
+      //DESCRIPTION: return product of given id (productId)
+      Connection c=datbaseProvider.getConnection();
+
+      //Query
+      var statement=c.prepareStatement("SELECT "+ProductTable.PRODUCT_ID+" FROM "+ProductTable.TABLE_NAME+" WHERE "+ProductTable.NAME+"=?");
+      statement.setString(1, product.getName());
+      //Execute Queries
+      var result_record=statement.executeQuery();
+      //Save data
+      result_record.next();
+      return result_record.getInt((ProductTable.PRODUCT_ID));
+    }
+
+    public boolean doesProductExist(Product product) throws SQLException {
+        Connection c=datbaseProvider.getConnection();
+        var statement=c.prepareStatement("SELECT * FROM "+ProductTable.TABLE_NAME+" WHERE "+ProductTable.NAME+"=?");
+        statement.setString(1, product.getName());
+        var result = statement.executeQuery();
+        return result.next();
+    }
+
     public void insertProduct(Product product) throws SQLException {
         //DESCRIPTION: add product to the products table
         Connection c=datbaseProvider.getConnection();
@@ -76,5 +98,3 @@ public class ProductSQLProvider {
         statement.executeUpdate();
     }
 }
-
-

@@ -18,9 +18,9 @@ public final class UnitSQLProvider {
         this.datbaseLoader = databaseLoader;
     }
 
-    public Unit get(Integer id) throws SQLException {
-        Connection c = datbaseLoader.getConnection();
-        var stmt = c.prepareStatement(
+    public Unit getUnit(Integer id) throws SQLException {
+        Connection connection = datbaseLoader.getConnection();
+        var stmt = connection.prepareStatement(
                 "SELECT " + UnitsTable.UNIT_ID + ", " +
                         UnitsTable.NAME +
                         " FROM " + UnitsTable.TABLE_NAME +
@@ -38,9 +38,35 @@ public final class UnitSQLProvider {
         }
     }
 
-    public HashMap<Integer, Unit> getAll() throws SQLException {
-        Connection c = datbaseLoader.getConnection();
-        var stmt = c.prepareStatement(
+    public int getUnitId(Unit unit) throws SQLException {
+        Connection connection = datbaseLoader.getConnection();
+        var stmt = connection.prepareStatement(
+                "SELECT " + UnitsTable.UNIT_ID +
+                        " FROM " + UnitsTable.TABLE_NAME +
+                        " WHERE " + UnitsTable.NAME + "=?"
+        );
+        stmt.setString(1, unit.getName());
+        var result = stmt.executeQuery();
+        result.next();
+        return result.getInt(UnitsTable.UNIT_ID);
+    }
+
+    public boolean doesUnitExist(Unit unit) throws SQLException {
+      Connection connection = datbaseLoader.getConnection();
+      var stmt = connection.prepareStatement(
+              "SELECT " + UnitsTable.UNIT_ID + ", " +
+                      UnitsTable.NAME +
+                      " FROM " + UnitsTable.TABLE_NAME +
+                      " WHERE " + UnitsTable.NAME + "=?"
+      );
+      stmt.setString(1, unit.getName());
+      var result = stmt.executeQuery();
+      return result.next();
+    }
+
+    public HashMap<Integer, Unit> getAllUnits() throws SQLException {
+        Connection connection = datbaseLoader.getConnection();
+        var stmt = connection.prepareStatement(
                 "SELECT " + UnitsTable.NAME + ", " + UnitsTable.UNIT_ID + " FROM " + UnitsTable.TABLE_NAME
         );
         var result = stmt.executeQuery();
@@ -51,9 +77,9 @@ public final class UnitSQLProvider {
         return ret;
     }
 
-    public Unit insert(Unit unit) throws SQLException {
-        Connection c = datbaseLoader.getConnection();
-        var stmt = c.prepareStatement(
+    public Unit insertUnit(Unit unit) throws SQLException {
+        Connection connection = datbaseLoader.getConnection();
+        var stmt = connection.prepareStatement(
                 "INSERT INTO " + UnitsTable.TABLE_NAME + "(" + UnitsTable.NAME + ") VALUES (?)",
                 Statement.RETURN_GENERATED_KEYS
         );
@@ -66,7 +92,7 @@ public final class UnitSQLProvider {
         throw new SQLException("Creating unit failed, no ID obtained.");
     }
 
-    public void delete(Unit unit) throws SQLException {
+    public void deleteUnit(Unit unit) throws SQLException {
         //TODO
     }
 }
