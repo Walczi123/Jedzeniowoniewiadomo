@@ -109,7 +109,7 @@ create table if not exists prices
   product_id integer       not null
     constraint prices_products_product_id_fk
     references products,
-  date       varchar(64)     not null
+  date       varchar(64)      not null
 );
 
 create table if not exists units
